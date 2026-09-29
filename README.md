@@ -37,15 +37,21 @@ Aplikasi ini dirancang agar dapat dijalankan sepenuhnya melalui **Docker Compose
    ```bash
    docker compose up -d --build
    ```
-   *Proses ini akan men-download image, menginstall dependency PHP & Node, serta mem-build asset frontend. Tunggu beberapa saat hingga selesai.*
+   *Proses ini akan men-download image dan menginstall dependency PHP & Node. Tunggu beberapa saat hingga selesai.*
 
-4. **Jalankan Migration Database**
-   Karena database MySQL butuh beberapa detik untuk siap (healthcheck), tunggu sejenak sebelum menjalankan perintah ini:
+4. **Build Frontend Assets**
+   Karena *local volume* menimpa file build di dalam container, Anda perlu mem-build aset UI-nya sekali setelah container jalan:
+   ```bash
+   docker compose exec app npm run build
+   ```
+
+5. **Jalankan Migration Database**
+   Karena database MySQL butuh beberapa detik untuk siap, tunggu sejenak sebelum menjalankan perintah ini:
    ```bash
    docker compose exec app php artisan migrate --force
    ```
 
-5. **Akses Aplikasi**
+6. **Akses Aplikasi**
    Buka browser dan akses: [http://localhost:8000](http://localhost:8000)
 
 ## 📡 Dokumentasi Endpoint API
@@ -61,6 +67,48 @@ Selain antarmuka web, PokéVault menyediakan REST API yang bisa diakses dengan p
 | `POST` | `/api/collection` | Tambah ke koleksi. *Body: `pokemon_id`, `nickname`, `level`, `notes`* |
 | `PUT` | `/api/collection/{id}` | Ubah koleksi. *Body: `nickname`, `level`, `notes`* |
 | `DELETE` | `/api/collection/{id}` | Hapus dari koleksi |
+
+### Contoh Request & Response (POST /api/collection)
+
+**Request:**
+```json
+{
+  "pokemon_id": 25,
+  "nickname": "Sparky",
+  "level": 12,
+  "notes": "Starter pertama saya"
+}
+```
+
+**Response (201 Created):**
+```json
+{
+  "pokemon_id": 25,
+  "name": "pikachu",
+  "image_url": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
+  "types": ["electric"],
+  "nickname": "Sparky",
+  "level": 12,
+  "notes": "Starter pertama saya",
+  "updated_at": "2026-09-29T10:00:00.000000Z",
+  "created_at": "2026-09-29T10:00:00.000000Z",
+  "id": 1
+}
+```
+
+### Format Error Standar
+
+Semua error dari API akan dikembalikan dengan format standar seperti berikut:
+
+**Response (400 Bad Request):**
+```json
+{
+  "error": {
+    "code": "ERROR",
+    "message": "Level harus bernilai antara 1 dan 100."
+  }
+}
+```
 
 ## 🔧 Troubleshooting
 

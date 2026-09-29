@@ -160,9 +160,9 @@ Endpoint didefinisikan pada `routes/api.php` (Base URL: `/api`) sebagai kontrak 
 
 | Method | Endpoint | Deskripsi | Status sukses |
 |---|---|---|---|
-| GET | `/pokemon?limit=20&offset=0` | Daftar Pokémon (proxy PokéAPI) | 200 |
+| GET | `/pokemon` | Daftar Pokémon (proxy PokéAPI) (Query params: `limit`, `offset`, `search`) | 200 |
 | GET | `/pokemon/:nameOrId` | Detail Pokémon (proxy PokéAPI) | 200 |
-| GET | `/collection` | Daftar koleksi | 200 |
+| GET | `/collection` | Daftar koleksi (Query params: `search`, `sort_by`, `sort_dir`) | 200 |
 | GET | `/collection/:id` | Detail satu entri koleksi | 200 |
 | POST | `/collection` | Tambah Pokémon ke koleksi | 201 |
 | PUT | `/collection/:id` | Ubah nickname, level, catatan | 200 |
@@ -234,7 +234,7 @@ Field yang dipakai dari respons detail: `id`, `name`, `height`, `weight`, `types
 - [ ] Entri koleksi dapat dihapus dengan konfirmasi.
 - [ ] Data koleksi tetap ada setelah aplikasi di-restart (persisten).
 - [ ] Error dari PokéAPI atau input tidak valid ditangani tanpa membuat aplikasi crash.
-- [ ] Aplikasi dapat dijalankan dengan `docker compose up` (dan perintah migrasi yang terdokumentasi) mengikuti README, tanpa langkah tersembunyi.
+- [ ] Aplikasi dapat dijalankan dengan `docker compose up` (beserta perintah migrasi dan build aset frontend yang terdokumentasi) mengikuti README, tanpa langkah tersembunyi.
 - [ ] Data MySQL tetap ada setelah container di-restart (menggunakan volume).
 
 ## 12. Risiko dan Mitigasi
