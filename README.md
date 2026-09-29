@@ -112,7 +112,6 @@ Semua error dari API akan dikembalikan dengan format standar seperti berikut:
 
 ## 🔧 Troubleshooting
 
-- **Error koneksi database (Connection refused)**: MySQL mungkin masih dalam proses booting saat migrasi dijalankan. Tunggu 10-15 detik lalu ulangi perintah `php artisan migrate`.
 - **Aset CSS/JS tidak termuat**: Pastikan perintah `npm run build` berjalan dengan baik pada saat image di-build (dilakukan otomatis di Dockerfile). Jika butuh mem-build ulang: `docker compose exec app npm run build`.
 
 ## 📜 Lisensi
