@@ -10,7 +10,7 @@
         x-transition:leave="transition ease-in duration-200"
         x-transition:leave-start="opacity-100 translate-y-0"
         x-transition:leave-end="opacity-0 translate-y-2"
-        class="toast toast-top toast-end z-[100]"
+        class="toast toast-bottom toast-end z-[100] mb-4 mr-4"
         style="display: none;"
     >
         <div class="alert" :class="type === 'success' ? 'alert-success' : 'alert-error'">
