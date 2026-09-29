@@ -39,19 +39,7 @@ Aplikasi ini dirancang agar dapat dijalankan sepenuhnya melalui **Docker Compose
    ```
    *Proses ini akan men-download image dan menginstall dependency PHP & Node. Tunggu beberapa saat hingga selesai.*
 
-4. **Build Frontend Assets**
-   Karena *local volume* menimpa file build di dalam container, Anda perlu mem-build aset UI-nya sekali setelah container jalan:
-   ```bash
-   docker compose exec app npm run build
-   ```
-
-5. **Jalankan Migration Database**
-   Karena database MySQL butuh beberapa detik untuk siap, tunggu sejenak sebelum menjalankan perintah ini:
-   ```bash
-   docker compose exec app php artisan migrate --force
-   ```
-
-6. **Akses Aplikasi**
+4. **Akses Aplikasi**
    Buka browser dan akses: [http://localhost:8000](http://localhost:8000)
 
 ## 📡 Dokumentasi Endpoint API
@@ -109,10 +97,6 @@ Semua error dari API akan dikembalikan dengan format standar seperti berikut:
   }
 }
 ```
-
-## 🔧 Troubleshooting
-
-- **Aset CSS/JS tidak termuat**: Pastikan perintah `npm run build` berjalan dengan baik pada saat image di-build (dilakukan otomatis di Dockerfile). Jika butuh mem-build ulang: `docker compose exec app npm run build`.
 
 ## 📜 Lisensi
 Open source di bawah [MIT License](https://opensource.org/licenses/MIT).
