@@ -98,5 +98,9 @@ Semua error dari API akan dikembalikan dengan format standar seperti berikut:
 }
 ```
 
+## 🔧 Troubleshooting
+
+- **Aset CSS/JS tidak termuat**: Pastikan perintah `npm run build` berjalan dengan baik pada saat image di-build (dilakukan otomatis di Dockerfile). Jika butuh mem-build ulang: `docker compose exec app npm run build`.
+
 ## 📜 Lisensi
 Open source di bawah [MIT License](https://opensource.org/licenses/MIT).

@@ -234,7 +234,7 @@ Field yang dipakai dari respons detail: `id`, `name`, `height`, `weight`, `types
 - [ ] Entri koleksi dapat dihapus dengan konfirmasi.
 - [ ] Data koleksi tetap ada setelah aplikasi di-restart (persisten).
 - [ ] Error dari PokéAPI atau input tidak valid ditangani tanpa membuat aplikasi crash.
-- [ ] Aplikasi dapat dijalankan dengan `docker compose up` mengikuti README. Langkah build aset dan migrasi dieksekusi otomatis oleh Docker, tanpa langkah manual tersembunyi.
+- [ ] Aplikasi dapat dijalankan dengan `docker compose up` (beserta perintah build aset frontend yang terdokumentasi) mengikuti README. Langkah migrasi dieksekusi otomatis oleh Docker, tanpa langkah manual tersembunyi.
 - [ ] Data MySQL tetap ada setelah container di-restart (menggunakan volume).
 
 ## 12. Risiko dan Mitigasi
